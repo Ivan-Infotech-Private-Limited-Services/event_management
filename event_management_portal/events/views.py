@@ -171,3 +171,5 @@ def Force_Delete(request, id):
             newrecord = organizers.objects.all()
             data = json.loads(serializers.serialize('json', newrecord))
             return JsonResponse({"message": "Organizer and all associated events and tickets deleted successfully", "data": data[0]['fields']}, safe=False, status=204)
+    else:
+        return JsonResponse({"message": "Invalid request method"}, status=405)
